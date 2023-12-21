@@ -15,8 +15,8 @@ pipeline {
                                   'value': 'Firefox'
                               ]
                           ]
+      }
     }
 
-    }
-
+}
 }
