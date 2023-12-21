@@ -15,6 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 public class MatrixSteps {
     double det ;
+    double det2;
     Matrix transposeMatrix ;
     Matrix inverseMatrix ;
     Matrix cofactorMatrix ;
@@ -41,12 +42,31 @@ public class MatrixSteps {
         det = MatrixMathematics.determinant(mat);
     }
 
+
     @Then("The result of determinant is {}")
     public void iFindAsDeterminantResult(double arg0) {
         Assert.assertEquals(arg0,det,0);
 
     }
+    @When("I compute determinant2 of")
+    public void iComputeDeterminant2Of(DataTable table) throws NoSquareException {
+        double [][] data = new double[2][2];
+        List<Map<String, Double>> rows = table.asMaps(String.class, Double.class);
+        int i =0;
+        for (Map<String, Double> columns : rows){
+            int j =0;
+            data[i][j]= columns.get("col1");
+            data[i][j+1] = columns.get("col2");
+            i=i+1;
+        }
+        mat.setData(data);
+        det2 = MatrixMathematics.determinant(mat);
+    }
+    @Then("The result of determinant2 is {}")
+    public void iFindAsDeterminant2Result(double arg0) {
+        Assert.assertEquals(arg0,det2,0);
 
+    }
 
     @When("I compute transpose of")
     public void iComputeTransposeOf(DataTable table) throws NoSquareException {

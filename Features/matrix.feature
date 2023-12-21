@@ -10,6 +10,13 @@ Feature: Matrix
       | 7    | 8  | 12     |
     Then The result of determinant is -9
 
+  Scenario: Determinant2
+    When I compute determinant2 of
+      | col1 | col2 |
+      | 1    | 2  |
+      | 4    | 5  |
+    Then The result of determinant2 is -3
+
   Scenario: Transpose
     When I compute transpose of
       | col1 | col2  |
