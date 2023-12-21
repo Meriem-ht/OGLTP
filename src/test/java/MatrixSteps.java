@@ -20,6 +20,7 @@ public class MatrixSteps {
     Matrix inverseMatrix ;
     Matrix cofactorMatrix ;
     Matrix mat;
+    String exceptionMessage;
 
     @Given("I have A Matrix")
     public void iHaveAMatrix() {
@@ -135,6 +136,30 @@ public class MatrixSteps {
         assertEquals(result,inverseMatrix);
 
 
+    }
+
+    @When("I compute inverse of a singular matrix")
+    public void iComputeInverseOfSingularMatrix(DataTable table) {
+        double [][] data = new double[2][2];
+        List<Map<String, Double>> rows = table.asMaps(String.class, Double.class);
+        int i =0;
+        for (Map<String, Double> columns : rows){
+            int j =0;
+            data[i][j]= columns.get("col1");
+            data[i][j+1] = columns.get("col2");
+            i=i+1;
+        }
+        mat.setData(data);
+        try {
+            inverseMatrix = MatrixMathematics.inverse(mat);
+        } catch (NoSquareException e) {
+            exceptionMessage = e.getMessage();
+        }
+    }
+
+    @Then("an exception should be thrown with message {string}")
+    public void anExceptionShouldBeThrownWithMessage(String expectedMessage) {
+        assertEquals(expectedMessage, exceptionMessage);
     }
 
 

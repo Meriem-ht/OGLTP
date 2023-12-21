@@ -11,7 +11,7 @@
         "steps": [
           {
             "result": {
-              "duration": 7003800,
+              "duration": 2073400,
               "status": "passed"
             },
             "line": 3,
@@ -24,7 +24,7 @@
         ]
       },
       {
-        "start_timestamp": "2023-12-21T21:59:17.285Z",
+        "start_timestamp": "2023-12-21T22:40:46.954Z",
         "line": 5,
         "name": "Determinant",
         "description": "",
@@ -34,7 +34,7 @@
         "steps": [
           {
             "result": {
-              "duration": 3004200,
+              "duration": 3204600,
               "status": "passed"
             },
             "line": 6,
@@ -76,7 +76,7 @@
           },
           {
             "result": {
-              "duration": 3992100,
+              "duration": 2693400,
               "status": "passed"
             },
             "line": 11,
@@ -115,7 +115,7 @@
         ]
       },
       {
-        "start_timestamp": "2023-12-21T21:59:17.449Z",
+        "start_timestamp": "2023-12-21T22:40:47.107Z",
         "line": 13,
         "name": "Determinant2",
         "description": "",
@@ -194,7 +194,7 @@
         ]
       },
       {
-        "start_timestamp": "2023-12-21T21:59:17.457Z",
+        "start_timestamp": "2023-12-21T22:40:47.114Z",
         "line": 20,
         "name": "Transpose",
         "description": "",
@@ -241,6 +241,7 @@
           },
           {
             "result": {
+              "duration": 999500,
               "status": "passed"
             },
             "line": 26,
@@ -296,7 +297,7 @@
         ]
       },
       {
-        "start_timestamp": "2023-12-21T21:59:17.458Z",
+        "start_timestamp": "2023-12-21T22:40:47.121Z",
         "line": 32,
         "name": "Inverse",
         "description": "",
@@ -337,6 +338,7 @@
           },
           {
             "result": {
+              "duration": 1045900,
               "status": "passed"
             },
             "line": 37,
@@ -389,8 +391,89 @@
         ]
       },
       {
-        "start_timestamp": "2023-12-21T21:59:17.467Z",
-        "line": 43,
+        "start_timestamp": "2023-12-21T22:40:47.126Z",
+        "line": 42,
+        "name": "Inverse of Singular Matrix",
+        "description": "",
+        "id": "matrix;inverse-of-singular-matrix",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 1002100,
+              "status": "passed"
+            },
+            "line": 43,
+            "name": "I compute inverse of a singular matrix",
+            "match": {
+              "location": "MatrixSteps.iComputeInverseOfSingularMatrix(io.cucumber.datatable.DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "col1",
+                  "col2"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "2"
+                ]
+              },
+              {
+                "cells": [
+                  "2",
+                  "4"
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "passed"
+            },
+            "line": 47,
+            "name": "an exception should be thrown with message \"Matrix is not invertible (determinant is zero).\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Matrix is not invertible (determinant is zero).\"",
+                  "offset": 43
+                }
+              ],
+              "location": "MatrixSteps.anExceptionShouldBeThrownWithMessage(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 2,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 998200,
+              "status": "passed"
+            },
+            "line": 3,
+            "name": "I have A Matrix",
+            "match": {
+              "location": "MatrixSteps.iHaveAMatrix()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2023-12-21T22:40:47.131Z",
+        "line": 50,
         "name": "Cofactor",
         "description": "",
         "id": "matrix;cofactor",
@@ -399,10 +482,9 @@
         "steps": [
           {
             "result": {
-              "duration": 1002500,
               "status": "passed"
             },
-            "line": 44,
+            "line": 51,
             "name": "I compute cofactor of",
             "match": {
               "location": "MatrixSteps.iComputeCofactorOf(io.cucumber.datatable.DataTable)"
@@ -433,7 +515,7 @@
             "result": {
               "status": "passed"
             },
-            "line": 48,
+            "line": 55,
             "name": "The result of cofactor is",
             "match": {
               "location": "MatrixSteps.iFindAsCofactoreResult(io.cucumber.datatable.DataTable)"

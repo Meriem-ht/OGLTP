@@ -39,6 +39,13 @@ Feature: Matrix
       | -2    | 1  |
       | 1.5   | -0.5  |
 
+  Scenario: Inverse of Singular Matrix
+    When I compute inverse of a singular matrix
+      | col1 | col2  |
+      | 1    | 2    |
+      | 2    | 4    |
+    Then an exception should be thrown with message "Matrix is not invertible (determinant is zero)."
+
 
   Scenario: Cofactor
     When I compute cofactor of
