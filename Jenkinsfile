@@ -52,6 +52,13 @@ stage("Build"){
            }
            }
 
+stage("notification"){
+          steps{
+          notifyEvents message: 'New notification', token: 'yr39rpilgauqk4ryend8tulapje7cb36'
+
+          }
+}
+
 
 
 
