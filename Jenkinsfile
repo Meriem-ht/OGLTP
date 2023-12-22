@@ -52,15 +52,25 @@ stage("Build"){
            }
            }
 
-stage("notification"){
-          steps{
-          notifyEvents message: 'New notification', token: 'yr39rpilgauqk4ryend8tulapje7cb36'
-          mail to: 'km_hathat@esi.dz',
-                         subject: "Succes",
-                         body:"Najahna"
-                    }
-          }
-
+stage("notification") {
+    steps {
+        // Ajoutez les étapes nécessaires ici
+    }
+    post {
+        failure {
+            notifyEvents message: 'Failure', token: 'v1vwv5hma4ribtadfrsz3rbhjii-ba6s'
+            mail to: 'km_hathat@esi.dz',
+                 subject: "Failure",
+                 body: "Something went wrong "
+        }
+        success {
+            notifyEvents message: 'Success ', token: 'v1vwv5hma4ribtadfrsz3rbhjii-ba6s'
+            mail to: 'km_hathat@esi.dz',
+                 subject: "Success",
+                 body: "Deployment successful"
+        }
+    }
+}
 
 
 
