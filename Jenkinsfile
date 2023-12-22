@@ -55,7 +55,7 @@ stage("Build"){
 stage("notification"){
           steps{
           notifyEvents message: 'New notification', token: 'yr39rpilgauqk4ryend8tulapje7cb36'
-          mail to: 'kh_moulfi@esi.dz',
+          mail to: 'km_hathat@esi.dz',
                          subject: "Succes",
                          body:"Najahna"
 
