@@ -54,7 +54,7 @@ stage("Build"){
 
 stage("notification") {
     steps {
-        // Ajoutez les étapes nécessaires ici
+      bat 'ls'
     }
     post {
         failure {
