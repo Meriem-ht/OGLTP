@@ -58,10 +58,8 @@ stage("notification"){
           mail to: 'km_hathat@esi.dz',
                          subject: "Succes",
                          body:"Najahna"
-
                     }
           }
-}
 
 
 
