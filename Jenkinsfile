@@ -1,39 +1,41 @@
 pipeline {
   agent any
   stages {
+
+
+
      stage("test"){
-      steps{
-          bat './gradlew test'
-          archiveArtifacts 'build/test-results/test/'
-          cucumber buildStatus: 'UNSTABLE',
-                          reportTitle: 'My report',
-                          fileIncludePattern: '**/*.json',
-                          trendsLimit: 10,
-                          classifications: [
-                              [
-                                  'key': 'Browser',
-                                  'value': 'Firefox'
-                              ]
-                          ]
-      }
-    }
+           steps{
+               bat './gradlew test'
+               junit 'build/test-results/test/*.xml'
+               cucumber buildStatus: 'UNSTABLE',
+                               reportTitle: 'My report',
+                               fileIncludePattern: 'target/report.json',
+                               trendsLimit: 10
+           }
+         }
 
 
-    stage("Code Analysis"){
-    steps{
+      stage("Code Analysis"){
+         steps{
 
-      withSonarQubeEnv('sonar') {
-                        bat "./gradlew sonar"
-                    }
-    }
-    }
+           withSonarQubeEnv('sonar') {
+                             bat "./gradlew sonar"
+                         }
+         }
+
+         }
 
 
- stage("Code Quality") {
-            steps {
-                waitForQualityGate abortPipeline: true
-            }
-        }
+
+      stage("Code Quality") {
+                  steps {
+                      waitForQualityGate abortPipeline: true
+                  }
+              }
+
+
+
 
 
 stage("Build"){
