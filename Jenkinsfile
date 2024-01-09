@@ -56,10 +56,10 @@ stage("Build"){
              }
              post {
                  failure {
-                     deployStatus = 'failure'
+                     ${deployStatus} = 'failure'
                  }
                  success {
-                     deployStatus = 'success'
+                     ${deployStatus} = 'success'
                  }
              }
          }
