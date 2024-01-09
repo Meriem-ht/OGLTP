@@ -78,6 +78,7 @@ stage("Build"){
                          subject: "Deployment ${deployStatus}",
                          body: "Deployment status: ${deployStatus}"
                  }
+
              }
 
 
