@@ -73,7 +73,7 @@ stage("Build"){
 
          stage("Notification") {
              steps {
-                 notifyEvents message:  ${deployStatus}, token: 'v1vwv5hma4ribtadfrsz3rbhjii-ba6s'
+                 notifyEvents message:  deployStatus, token: 'yr39rpilgauqk4ryend8tulapje7cb36'
                      mail to: 'km_hathat@esi.dz',
                          subject: "Deployment ${deployStatus}",
                          body: "Deployment status: ${deployStatus}"
