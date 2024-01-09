@@ -51,19 +51,23 @@ stage("Build"){
  }
 
          stage("Deploy") {
-             steps {
-                bat './gradlew publish'
-             }
-             post {
-                 failure {
-                  deployStatus = 'failure'
-
-                 }
-                 success {
-                   deployStatus = 'success'
-
-                 }
-             }
+              steps {
+                    script {
+                     bat './gradlew publish'
+                    }
+                }
+                post {
+                    failure {
+                        script {
+                             deployStatus = 'failure'
+                        }
+                    }
+                    success {
+                        script {
+                           deployStatus = 'success'
+                        }
+                    }
+         }
          }
 
          stage("Notification") {
