@@ -1,4 +1,5 @@
 pipeline {
+
   agent any
    environment {
           deployStatus = ''
@@ -49,48 +50,29 @@ stage("Build"){
             }
  }
 
- pipeline {
-     agent any
-
-     environment {
-         deployStatus = ''
-     }
-
-     stages {
          stage("Deploy") {
              steps {
-                 script {
-                     bat './gradlew publish'
-                 }
+                bat './gradlew publish'
              }
              post {
                  failure {
-                     script {
-                         deployStatus = 'failure'
-                     }
+                     deployStatus = 'failure'
                  }
                  success {
-                     script {
-                         deployStatus = 'success'
-                     }
+                     deployStatus = 'success'
                  }
              }
          }
 
          stage("Notification") {
              steps {
-                 script {
-                     echo "Deployment status: ${deployStatus}"
-
-                     notifyEvents message: deployStatus, token: 'v1vwv5hma4ribtadfrsz3rbhjii-ba6s'
+                 notifyEvents message: deployStatus, token: 'v1vwv5hma4ribtadfrsz3rbhjii-ba6s'
                      mail to: 'km_hathat@esi.dz',
                          subject: "Deployment ${deployStatus}",
                          body: "Deployment status: ${deployStatus}"
                  }
              }
-         }
-     }
- }
+
 
 
 
